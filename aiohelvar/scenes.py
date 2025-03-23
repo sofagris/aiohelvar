@@ -65,26 +65,31 @@ async def get_scenes(router, groups):
 
     response = await router._send_command_task(Command(CommandType.QUERY_SCENE_NAMES))
 
+    # Register all possible scenes first
     for group in groups.groups.values():
         for block in range(1, 9):
             for scene in range(1, 17):
                 scene = Scene(SceneAddress(int(group.group_id), int(block), int(scene)))
                 router.scenes.register_scene(scene.address, scene)
 
-    if response.result is None:
-        _LOGGER.info("No scenes found on router")
+    # If we get an error message or no result, continue with empty scenes
+    if response.result is None or response.result.startswith("!"):
+        _LOGGER.info("No scenes found on router - continuing with empty scenes")
         return
 
-    parts = response.result.strip("@").split("@")
+    try:
+        parts = response.result.strip("@").split("@")
 
-    for part in parts:
-        sub_parts = part.split(":")
+        for part in parts:
+            sub_parts = part.split(":")
 
-        try:
-            scene_address = SceneAddress(*[int(a) for a in sub_parts[0].split(".")])
-            router.scenes.update_scene_name(scene_address, sub_parts[1])
-        except KeyError:
-            _LOGGER.error(f"Unknown scene address {part}")
+            try:
+                scene_address = SceneAddress(*[int(a) for a in sub_parts[0].split(".")])
+                router.scenes.update_scene_name(scene_address, sub_parts[1])
+            except KeyError:
+                _LOGGER.error(f"Unknown scene address {part}")
+    except Exception as e:
+        _LOGGER.error(f"Error processing scenes: {e}")
 
     # [router.scenes.register_scene(scene.address, scene) for scene in scenes]
 
