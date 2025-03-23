@@ -71,6 +71,10 @@ async def get_scenes(router, groups):
                 scene = Scene(SceneAddress(int(group.group_id), int(block), int(scene)))
                 router.scenes.register_scene(scene.address, scene)
 
+    if response.result is None:
+        _LOGGER.info("No scenes found on router")
+        return
+
     parts = response.result.strip("@").split("@")
 
     for part in parts:
