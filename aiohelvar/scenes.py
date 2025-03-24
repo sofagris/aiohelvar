@@ -30,9 +30,13 @@ class Scenes:
         self.scenes[scene_address] = scene
 
     def update_scene_name(self, scene_address, name):
-        self.scenes[scene_address].name = name
+        if scene_address in self.scenes:
+            self.scenes[scene_address].name = name
 
     def get_scene(self, scene_address):
+        if scene_address not in self.scenes:
+            _LOGGER.warning(f"Scene {scene_address} not found in registered scenes")
+            return None
         return self.scenes[scene_address]
 
     def get_scenes_for_group(self, group_id: int, only_named=True):
