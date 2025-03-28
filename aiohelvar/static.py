@@ -13,15 +13,17 @@ UNKNOWN_PROTOCOL = "Unknown Protocol"
 
 
 DALI_TYPES = {
-    1: "Fluorescent Lamps",
-    2: "Self contained emergency lighting",
-    3: "Discharge lamps",
-    4: "Low voltage halogen lamps",
-    5: "Conversion to D.C.",
+    0: "Fluorescent Lamps",
+    1: "Self-contained emergency lighting",
+    2: "Discharge lamps",
+    3: "Low voltage halogen lamps",
+    4: "Incandescent lamps",
+    5: "Conversion into D.C. voltage",
     6: "LED modules",
     7: "Switching function",
     8: "Colour control",
-    9: "Sequencer",
+    9: "Sequencer"
+    # Undefined	0x0B-0xFE, this will be handled in the parser
 }
 
 
@@ -31,6 +33,7 @@ UNKNOWN_DALI_TYPE = "Unknown DALI Device"
 UNKNOWN_DIGIDIM_TYPE = "Unknown DIGIDIM Device"
 
 
+# Helper function to convert a 3-byte hex value to a 32-bit integer
 def h_2_d(a, b, c):
     return (a << 16) + (b << 8) + c
 

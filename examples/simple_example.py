@@ -10,9 +10,23 @@ async def main():
 
     """
 
-    router_ip_address = "10.254.0.1"
+    # Replace with your router's IP address
+    router_ip_address = "10.47.14.20"
     router_helvarnet_port = 50000
-    device_address_to_flash = HelvarAddress(0, 1, 1, 14)
+
+    # Replace with the cluster ID and router ID of your router
+    # If you don't know them, you can leave them as None and they will be derived from the IP address
+    cluster_id = None
+    router_id = None
+
+    # Replace with the address of the device you want to flash
+    device_address_to_flash = HelvarAddress(14, 20, 1, 1)
+
+    # We will assume the cluster ID and router ID are the same as the IP address
+    if cluster_id is None:
+        cluster_id = router_ip_address.split(".")[2]
+    if router_id is None:
+        router_id = router_ip_address.split(".")[3]
 
     # set up some verbose logging.
     console = logging.StreamHandler()
@@ -21,7 +35,7 @@ async def main():
 
     # Connect to router. Router object will keep the connection alive.
     print(f"Connecting to router at address: {router_ip_address}...")
-    router = Router(router_ip_address, router_helvarnet_port)
+    router = Router(router_ip_address, router_helvarnet_port, cluster_id, router_id)
     await router.connect()
 
     print(f"Connected to router on workgroup: {router.workgroup_name}.")
