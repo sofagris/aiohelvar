@@ -22,8 +22,20 @@ class CommandType(Enum):
     QUERY_HELVARNET_VERSION = (191, "Query the HelvarNet software version.")
 
     # Commands
-    DIRECT_LEVEL_DEVICE = (14, "Direct Level, Device")
-    RECALL_SCENE = (11, "Recall Scene")
+    RECALL_SCENE_GROUP = (11, "Recall Scene (Group)")
+    RECALL_SCENE_DEVICE = (12, "Recall Scene (Device)")
+    DIRECT_LEVEL_GROUP = (13, "Direct Level (Group)")
+    DIRECT_LEVEL_DEVICE = (14, "Direct Level (Device)")
+    DIRECT_PROPORTION_GROUP = (15, "Direct Proportion (Group)") 
+    DIRECT_PROPORTION_DEVICE = (16, "Direct Proportion (Device)")
+    MODIFY_PROPORTION_GROUP = (17, "Modify Proportion (Group)")
+    MODIFY_PROPORTION_DEVICE = (18, "Modify Proportion (Device)")
+    EMERGENCY_FUNCTION_TEST_GROUP = (19, "Emergency Function Test (Group)")
+    EMERGENCY_FUNCTION_TEST_DEVICE = (20, "Emergency Function Test (Device)")
+    EMERGENCY_DURATION_TEST_GROUP = (21, "Emergency Duration Test (Group)")
+    EMERGENCY_DURATION_TEST_DEVICE = (22, "Emergency Duration Test (Device)")
+    STOP_EMERGENCY_TESTS_GROUP = (23, "Stop Emergency Tests (Group)")
+    STOP_EMERGENCY_TESTS_DEVICE = (24, "Stop Emergency Tests (Device)")
 
     def __init__(self, command_id, description):
         self.command_id = command_id
@@ -41,7 +53,7 @@ class CommandType(Enum):
 
 
 COMMAND_TYPES_DONT_LISTEN_FOR_RESPONSE = [
-    CommandType.RECALL_SCENE,
+    CommandType.RECALL_SCENE_GROUP,
     CommandType.DIRECT_LEVEL_DEVICE,
 ]
 

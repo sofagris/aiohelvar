@@ -5,16 +5,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="aiohelvar",
-    version="0.9.3",
-    author="Tom Playford",
+    version="0.9.4",
+    author="SofaGris",
     description="Async HelvarNet communication and control library.",
     long_description=long_description,
     license="Apache 2.0",
     long_description_content_type="text/markdown",
-    url="https://github.com/tomplayford/aiohelvar",
-    download_url="https://github.com/tomplayford/aiohelvar/archive/refs/tags/V0.9.3.tar.gz",
+    url="https://github.com/sofagris/aiohelvar",
+    download_url="https://github.com/sofagris/aiohelvar/archive/refs/tags/V0.9.4.tar.gz",
     project_urls={
-        "Bug Tracker": "https://github.com/tomplayford/aiohelvar/issues",
+        "Bug Tracker": "https://github.com/sofagris/aiohelvar/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

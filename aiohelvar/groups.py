@@ -124,7 +124,7 @@ class Groups:
 
         await self.router.send_command(
             Command(
-                CommandType.RECALL_SCENE,
+                CommandType.RECALL_SCENE_GROUP,
                 [
                     CommandParameter(CommandParameterType.GROUP, scene_address.group),
                     CommandParameter(CommandParameterType.BLOCK, scene_address.block),

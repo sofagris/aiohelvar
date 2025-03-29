@@ -162,7 +162,7 @@ class Router:
                     else:
                         _LOGGER.info(f"Received command: {command}")
 
-                        if command.command_type == CommandType.RECALL_SCENE:
+                        if command.command_type == CommandType.RECALL_SCENE_GROUP:
                             asyncio.create_task(self.handle_scene_recall(command))
                             continue
 
