@@ -75,6 +75,7 @@ DIGIDIM_TYPES = {
     h_2_d(0x00, 0x41, 0x08): DigidimType("410", "Ballast Style 1-10V Converter", True),
     h_2_d(0x00, 0x41, 0x60): DigidimType("416S", "16A Dimmer", True),
     h_2_d(0x00, 0x42, 0x52): DigidimType("425S", "25A Dimmer", True),
+    h_2_d(0x00, 0x44, 0x12): DigidimType("441", "Occupancy Detector Interface 441", False),
     h_2_d(0x00, 0x44, 0x43): DigidimType("444", "Multi Input Unit", False),
     h_2_d(0x00, 0x45, 0x04): DigidimType("450", "800W Dimmer", True),
     h_2_d(0x00, 0x45, 0x28): DigidimType("452", "1000W Universal Dimmer", True),

@@ -160,7 +160,6 @@ async def get_groups(router):
         if response.result is not None:
             members = [member.strip("@") for member in response.result.split(",")]
             _LOGGER.debug(f"members is '{members}'")
-
             addresses = [HelvarAddress(*member.split(".")) for member in members]
             _LOGGER.debug(f"addresses is '{addresses}'")
 
@@ -200,4 +199,6 @@ async def get_groups(router):
         router.groups.register_group(group)
         asyncio.create_task(update_name(router, group.group_id))
         asyncio.create_task(update_group_devices(router, group.group_id))
+        print(f"group.group_id: {group.group_id}, group.name: {group.name}")
+
         asyncio.create_task(update_group_last_scene(router, group.group_id))
